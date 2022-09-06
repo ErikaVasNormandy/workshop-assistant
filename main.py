@@ -76,7 +76,7 @@ async def on_member_join(member):
     print("2nd branch called new member")
     channel = discord.utils.get(member.guild.text_channels, name="general")
     await channel.send(f"{member.name} has arrived!, Enjoy your stay at {member.guild.name}!")
-    with open('images/welcome.jpg', 'rb') as f:
+    with open('images/welcome-neon.jpg', 'rb') as f:
         picture = discord.File(f)
         await channel.send(file=picture)
 
