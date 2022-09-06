@@ -51,6 +51,18 @@ async def on_message(message):
     if message.content.startswith('$inspire'):
         quote = get_quote()
         await message.channel.send(quote)
+    if message.content.startswith('!welcome'):
+            with open('images/Workshopassistant.jpeg', 'rb') as f:
+                picture = discord.File(f)
+                await message.channel.send(file=picture)
+                await message.channel.send('**Hello World! I am Workshop Assistant** ')
+                await message.channel.send("\"_Sometimes the smallest things make the biggest difference._\" ")
+                await message.channel.send('- Greet New Members (!welcome)')
+                await message.channel.send('- Fetch Tech-Related News (!news)')
+                await message.channel.send('- Scheduler (Repeated Events)')
+                await message.channel.send('- Remind you the Day and the Date (!clock)')
+                await message.channel.send('- Send LoFi Vibes (!lofi)')
+
     if message.content.startswith('!news'):
         await message.channel.send("**Cyber-Related News Bytes For Today Are As Follows: **\nKeep in mind these are the tweets from @bleepingcomputer, let me know if you have a preferred twitter account to scrape!")
       
@@ -140,12 +152,13 @@ async def on_guild_join(guild):
             with open('images/Workshopassistant.jpeg', 'rb') as f:
                 picture = discord.File(f)
                 await channel.send(file=picture)
-            await channel.send('**Hello World! I am Workshop Assistant.** ')
+            await channel.send('**Hello World! I am Workshop Assistant** ')
             await channel.send("\"_Sometimes the smallest things make the biggest difference._\" ")
-            await channel.send('- Greet New Members')
+            await channel.send('- Greet New Members (!welcome)')
             await channel.send('- Fetch Tech-Related News (!news)')
             await channel.send('- Scheduler (Repeated Events)')
-            await channel.send('- Send Pictures')
+            await channel.send('- Remind you the Day and the Date (!clock)')
+            await channel.send('- Send LoFi Vibes (!lofi)')
 
         break
 
