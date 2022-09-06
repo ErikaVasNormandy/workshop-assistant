@@ -140,7 +140,8 @@ async def on_guild_join(guild):
             with open('images/Workshopassistant.jpeg', 'rb') as f:
                 picture = discord.File(f)
                 await channel.send(file=picture)
-            await channel.send('**Hello World! I am Workshop Assistant.** \'_Sometimes the smallest things make the biggest difference._\' ')
+            await channel.send('**Hello World! I am Workshop Assistant.** ')
+            await channel.send("\"_Sometimes the smallest things make the biggest difference._\" ")
             await channel.send('- Greet New Members')
             await channel.send('- Fetch Tech-Related News (!news)')
             await channel.send('- Scheduler (Repeated Events)')
