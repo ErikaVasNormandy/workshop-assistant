@@ -137,7 +137,7 @@ async def on_guild_join(guild):
     print("joined!")
     for channel in guild.text_channels:
         if channel.permissions_for(guild.me).send_messages:
-            with open('images/Workshopassistant.png', 'rb') as f:
+            with open('images/Workshopassistant.jpeg', 'rb') as f:
                 picture = discord.File(f)
                 await channel.send(file=picture)
             await channel.send('Hello World! I am Workshop Assistant. Sometimes the smallest things make the biggest difference.')
