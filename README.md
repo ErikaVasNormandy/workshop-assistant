@@ -29,3 +29,9 @@ https://stackoverflow.com/questions/52241051/i-want-to-let-my-discord-bot-send-i
 
 When the Bot itself joins a server
 https://stackoverflow.com/questions/63127743/how-to-make-discord-py-bot-send-a-message-when-it-is-invited-to-a-server
+
+Sending to a specific channel
+https://stackoverflow.com/questions/50651305/message-object-has-no-attribute-server
+
+Sending to a specific channel - How would you even know the id?
+https://stackoverflow.com/questions/59333157/discord-py-send-message-to-channel
