@@ -24,3 +24,8 @@ https://discordapp.com/api/oauth2/authorize?client_id=[INSERT CLIENT ID HERE]&pe
 Unsplash:
 Photo by <a href="https://unsplash.com/@clemono?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Clem Onojeghuo</a> on <a href="https://unsplash.com/s/photos/welcome-neon-sign?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
   
+Pictures
+https://stackoverflow.com/questions/52241051/i-want-to-let-my-discord-bot-send-images-gifs
+
+When the Bot itself joins a server
+https://stackoverflow.com/questions/63127743/how-to-make-discord-py-bot-send-a-message-when-it-is-invited-to-a-server
