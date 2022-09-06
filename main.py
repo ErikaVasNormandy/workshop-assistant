@@ -1,3 +1,7 @@
+########################################################################################################################
+###### Workshop Assistant
+########################################################################################################################
+
 ############################################################
 ### 1. Environment Setup
 ############################################################
@@ -37,7 +41,6 @@ async def on_ready():
 ############################################################
 @bot.event
 async def on_message(message):
-    print("2nd branch called on_message")
     if message.author == bot.user:
         return
     #### Basic Ping
@@ -64,20 +67,22 @@ async def on_message(message):
                 await message.channel.send('- Send LoFi Vibes (!lofi)')
 
     if message.content.startswith('!news'):
-        await message.channel.send("**Cyber-Related News Bytes For Today Are As Follows: **\nKeep in mind these are the tweets from @bleepingcomputer, let me know if you have a preferred twitter account to scrape!")
-      
+        targetChannel = discord.utils.get(message.guild.channels, name="news-bytes")
+        print(targetChannel)
+#        await message.channel.send("**Cyber-Related News Bytes For Today Are As Follows: **\nKeep in mind these are the tweets from @bleepingcomputer, let me know if you have a preferred twitter account to scrape!")
+        await targetChannel.send("**Cyber-Related News Bytes For Today Are As Follows: **\nKeep in mind these are the tweets from @bleepingcomputer, let me know if you have a preferred twitter account to scrape!")
         for i in tweets:
             minimalTitleText = i.text
             expanded_url = i.entities["urls"][0]["expanded_url"]
             createdDate = i._json["created_at"]
 #           await message.channel.send(minimalTitleText)
 #            await message.channel.send("**Tweet #%s**" % i)
-            await message.channel.send(".")
+            await targetChannel.send(".")
 
-            await message.channel.send("--------------------------------------------------------\n**Date Posted: %s**\n--------------------------------------------------------\n" % createdDate)
-            await message.channel.send(expanded_url)
+            await targetChannel.send("--------------------------------------------------------\n**Date Posted: %s**\n--------------------------------------------------------\n" % createdDate)
+            await targetChannel.send(expanded_url)
 
-           # await message.channel.send("**Cyber-Related NewsBytes for Today Are as Follows:::**\nKeep in mind these are the tweets from @bleepingcomputer, let me know if you have a preferred twitter account to scrape!")
+
           
 ############################################################
 #### 5. Some More Creative commands
