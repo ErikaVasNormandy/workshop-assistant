@@ -11,7 +11,7 @@ Prod version for various bots. We will use Python for the base, and make various
 
 # Instructions
 
-### python main.py
+> python main.py
 
 > pip3 install virtualenv
 > virtualenv [directory]
