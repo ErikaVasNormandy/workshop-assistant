@@ -52,7 +52,7 @@ async def on_message(message):
         quote = get_quote()
         await message.channel.send(quote)
     if message.content.startswith('!news'):
-        await message.channel.send("**Cyber-Related NewsBytes for Today Are as Follows:::**\nKeep in mind these are the tweets from @bleepingcomputer, let me know if you have a preferred twitter account to scrape!")
+        await message.channel.send("**Cyber-Related News Bytes For Today Are As Follows: **\nKeep in mind these are the tweets from @bleepingcomputer, let me know if you have a preferred twitter account to scrape!")
       
         for i in tweets:
             minimalTitleText = i.text
@@ -76,6 +76,10 @@ async def on_member_join(member):
     print("2nd branch called new member")
     channel = discord.utils.get(member.guild.text_channels, name="general")
     await channel.send(f"{member.name} has arrived!, Enjoy your stay at {member.guild.name}!")
+    with open('images/welcome.jpg', 'rb') as f:
+        picture = discord.File(f)
+        await channel.send(file=picture)
+
    
    
    
@@ -128,7 +132,21 @@ print("tweets grabbed")
 
     
 
+@bot.event
+async def on_guild_join(guild):
+    print("joined!")
+    for channel in guild.text_channels:
+        if channel.permissions_for(guild.me).send_messages:
+            with open('images/Workshopassistant.jpeg', 'rb') as f:
+                picture = discord.File(f)
+                await channel.send(file=picture)
+            await channel.send('Hello World! I am Workshop Assistant. Sometimes the smallest things make the biggest difference.')
+            await channel.send('- Greet New Members')
+            await channel.send('- Fetch Tech-Related News (!news)')
+            await channel.send('- Scheduler (Repeated Events)')
+            await channel.send('- Send Pictures')
 
+        break
 
     
 
