@@ -12,6 +12,10 @@ import discord
 from dotenv import load_dotenv, find_dotenv
 load_dotenv()  # take environment variables from .env.
 
+from apscheduler.schedulers.asyncio import AsyncIOScheduler
+from apscheduler.triggers.cron import CronTrigger
+from discord.ext import commands
+
 ############################################################
 ### 2. Bot Setup
 ############################################################
@@ -34,6 +38,15 @@ DISCORD_TOKEN = os.getenv("DISCORD_TOKEN")
 async def on_ready():
     print("2nd branch called on ready")
     print(f"Logged in as {bot.user.name}({bot.user.id})")
+    
+    bot.loop.create_task(task())
+    scheduler = AsyncIOScheduler()
+
+    #sends "Your Message" at 12PM and 18PM (Local Time)
+    scheduler.add_job(newsfetch, CronTrigger(hour="5, 14", minute="00", second="00"))
+
+    #starting the scheduler
+    scheduler.start()
     
     
 ############################################################
@@ -167,7 +180,43 @@ async def on_guild_join(guild):
 
         break
 
-    
+############################################################
+#### 9. Scheduling
+############################################################
+
+import schedule
+import time
+
+import asyncio
+
+import datetime as dt
+from discord.utils import get
+text_channel_list =[]
+newsChannelsToPostTo = [
+        1016846653501739109,
+        1016841605455556741
+]
+async def newsfetch():
+    for i in newsChannelsToPostTo:
+        targetChannel = bot.get_channel(i)
+        await bot.wait_until_ready()
+        await targetChannel.send("**Cyber-Related NewsBytes for Today Are as Follows:::**\nKeep in mind these are the tweets from @bleepingcomputer, let me know if you have a preferred twitter account to scrape!")
+      
+        for i in tweets:
+            minimalTitleText = i.text
+            expanded_url = i.entities["urls"][0]["expanded_url"]
+            createdDate = i._json["created_at"]
+
+#            await message.channel.send(".")
+            await targetChannel.send(".")
+            await targetChannel.send("--------------------------------------------------------\n**Date Posted: %s**\n--------------------------------------------------------\n" % createdDate)
+            await targetChannel.send(expanded_url)
+   
+
+async def task():
+    while True:
+        schedule.run_pending()
+        await asyncio.sleep(1)
 
 ############################################################
 #### ... Run the Bot
