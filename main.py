@@ -43,7 +43,7 @@ async def on_ready():
     scheduler = AsyncIOScheduler()
 
     #sends "Your Message" at 12PM and 18PM (Local Time)
-    scheduler.add_job(newsfetch, CronTrigger(hour="8, 14", minute="30", second="00"))
+    scheduler.add_job(newsfetch, CronTrigger(hour="9", minute="00", second="00"))
 
     #starting the scheduler
     scheduler.start()
@@ -90,9 +90,8 @@ async def on_message(message):
             createdDate = i._json["created_at"]
 #           await message.channel.send(minimalTitleText)
 #            await message.channel.send("**Tweet #%s**" % i)
-            await targetChannel.send(".")
 
-            await targetChannel.send("--------------------------------------------------------\n**Date Posted: %s**\n--------------------------------------------------------\n" % createdDate)
+            await targetChannel.send("\n--------------------------------------------------------\n**Date Posted: %s**\n--------------------------------------------------------\n" % createdDate)
             await targetChannel.send(expanded_url)
 
 
@@ -208,7 +207,6 @@ async def newsfetch():
             createdDate = i._json["created_at"]
 
 #            await message.channel.send(".")
-            await targetChannel.send(".")
             await targetChannel.send("--------------------------------------------------------\n**Date Posted: %s**\n--------------------------------------------------------\n" % createdDate)
             await targetChannel.send(expanded_url)
    
