@@ -43,7 +43,7 @@ async def on_ready():
     scheduler = AsyncIOScheduler()
 
     #sends "Your Message" at 12PM and 18PM (Local Time)
-    scheduler.add_job(newsfetch, CronTrigger(hour="9", minute="00", second="00"))
+    scheduler.add_job(newsfetch, CronTrigger(hour="14", minute="00", second="00"))
 
     #starting the scheduler
     scheduler.start()
